@@ -17,6 +17,7 @@ module OAuth2
       end
 
       message << response.body
+      message << [response.response.env.method.upcase, response.response.env.url.to_s].join(' - ')
 
       super(message.join("\n"))
     end
