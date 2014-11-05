@@ -16,8 +16,8 @@ module OAuth2
         message << "#{@code}: #{@description}"
       end
 
-      message << response.body
-      message << [response.response.env.method.upcase, response.response.env.url.to_s].join(' - ')
+      message << [response.status, response.body].join(' ')
+      message << [response.response.env.method.upcase, response.response.env.url.to_s].join(' ')
 
       super(message.join("\n"))
     end
